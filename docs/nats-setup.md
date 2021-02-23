@@ -4,8 +4,9 @@ How to setup NATS using Docker and local CLI to interact.
 
 ## Install & run server & Web-UI
 
-1. Start NATS and UI using `docker-compose up --detach --remove-orphans`.
-2. Test the cluster with a simple sender / subscriber:
+Both NATS and Web-UI are started with the `docker-compose.yml`.
+
+1. Test the cluster with a simple sender / subscriber:
 
    ~~~bash
    # Startup a local container in same network
@@ -29,7 +30,7 @@ How to setup NATS using Docker and local CLI to interact.
    $ nats-pub -s "nats://nats-2:4222" hello second
    [#2] Received on [hello]: 'second'
    ~~~
-3. You can use the monitoring endpoint [http://localhost:8222/](http://localhost:8222/) to retrieve information considering:
+2. You can use the monitoring endpoint [http://localhost:8222/](http://localhost:8222/) to retrieve information considering:
    * variables
    * connections
    * routes
@@ -53,7 +54,7 @@ $ nats context add local --description "My Docker Cluster"
 $ nats context ls
 Known contexts:
 
-   localhost           My Docker Cluster
+   local           My Docker Cluster
 ~~~
 
 ### Publish - Subscribe
@@ -69,7 +70,7 @@ $ nats sub cli.demo
 $ nats pub cli.demo "hello world"
 
 # You can use Go templates :-)
-$ nats pub cli.demo "message {{.Count}} @ {{.TimeStamp}}" --count=10
+$ nats pub cli.demo "message {{.TimeStamp}}" --count=10
 ~~~
 
 ### Request - Reply
@@ -82,10 +83,23 @@ $ nats reply 'cli.weather.>' "Weather Service"
 12:43:28 Listening on "cli.weather.>" in group "NATS-RPLY-22"
 
 # Perform a request (terminal 2)
-$ nats request cli.weather.london
+$ nats request cli.weather.london '' --raw
 12:46:34 Sending request on "cli.weather.london"
 12:46:35 Received on "_INBOX.BJoZpwsshQM5cKUj8KAkT6.HF9jslpP" rtt 404.76854ms
 Weather Service
+~~~
+
+To make this a bit more interesting we can interact with the wttr.in web service:
+
+~~~bash
+# Execute a curl command and return the output as reply
+$ nats reply 'cli.weather.>' --command "curl -s wttr.in/{{2}}?format=3"
+12:47:03 Listening on "cli.weather.>" in group "NATS-RPLY-22"
+
+# We can perform the same request again:
+$ nats request "cli.weather.{london,newyork}" '' --raw
+london: 🌦 +7°C
+newyork: ☀️ +2°C
 ~~~
 
 ## NATS Web-UI
@@ -101,4 +115,15 @@ Weather Service
 
    * Create a client, connected to server `nats`, click on "Subscribe"
    * Assure the `cli.demo` topic is selected under **Server Subject Hierarchy**
-   * Publish a message as shown in the CLI
+   * Publish a message as shown in the CLI section.
+
+## Benthos
+
+Benthos is awesome. Really.
+
+~~~bash
+# Start and listen to the subject cli.demo
+$ benthos -c ./benthos/nats-incoming-cli-demo.yaml
+~~~
+
+Next, publish a message as shown in the CLI section.
