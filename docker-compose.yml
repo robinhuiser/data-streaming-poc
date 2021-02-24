@@ -4,7 +4,7 @@ services:
   #
   # NATS section
   nats:
-    image: nats:latest
+    image: ${NATS_SERVER_IMAGE}
     ports:
       - 8222:8222
       - 4222:4222
@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
 
   nats-1:
-    image: nats:latest
+    image: ${NATS_SERVER_IMAGE}
     command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
     networks: 
       - nats_network
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   nats-2:
-    image: nats:latest
+    image: ${NATS_SERVER_IMAGE}
     command: "--cluster nats://0.0.0.0:6222 --routes=nats://ruser:T0pS3cr3t@nats:6222"
     networks: 
       - nats_network
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
 
   nats-ui:
-    image: sphqxe/nats-webui:latest
+    image: ${NATS_UI_IMAGE}
     ports:
       - 3301:80
     networks: 
@@ -43,7 +43,7 @@ services:
   #
   # MongoDB section
   mongodb:
-    image: mongo:latest
+    image: ${MONGODB_SERVER_IMAGE}
     ports:
       - 27017:27017
     volumes:
@@ -53,7 +53,7 @@ services:
     restart: unless-stopped
 
   mongodb-ui:
-    image: mongoclient/mongoclient:latest
+    image: ${MONGODB_UI_IMAGE}
     depends_on:
       - mongodb
     networks:
