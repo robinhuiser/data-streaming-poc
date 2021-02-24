@@ -37,7 +37,7 @@ You need to have installed:
 ## Start the middleware
 
 ~~~bash
-# This will start NATS & Web-UI, ...
+# This will start NATS, MongoDB & Web-UIs
 $ docker-compose up --detach --remove-orphans
 ~~~
 
