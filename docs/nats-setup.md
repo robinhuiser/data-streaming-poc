@@ -6,37 +6,42 @@ How to setup NATS using Docker and local CLI to interact.
 
 Both NATS and Web-UI are started with the `docker-compose.yml`.
 
-1. Test the cluster with a simple sender / subscriber:
+* Server is available at `nats://localhost:4222`
+* UI is available at: [http://localhost:3301](http://localhost:3301)
+* Monitoring is available at [http://localhost:8222/](http://localhost:8222/)
 
-   ~~~bash
-   # Startup a local container in same network
-   $ docker run --network nats --rm -it synadia/nats-box
-               _             _               
-    _ __   __ _| |_ ___      | |__   _____  __
-   | '_ \ / _` | __/ __|_____| '_ \ / _ \ \/ /
-   | | | | (_| | |_\__ \_____| |_) | (_) >  < 
-   |_| |_|\__,_|\__|___/     |_.__/ \___/_/\_\
-                                              
-   nats-box v0.4.0
-   # Register a listener on primary node
-   $ nats-sub -s nats://nats:4222 hello &
-   Listening on [hello]
+> **Note**: the monitoring endpoint allows you to to retrieve information considering:
+>   * variables
+>   * connections
+>   * routes
+>   * gateways
+>   * leafs
+>   * subscriptions
 
-   # Send message to topic on 2nd node
-   $ nats-pub -s "nats://nats-1:4222" hello first
-   [#1] Received on [hello]: 'first'
+You might want to test your **cluster** with a simple sender / subscriber:
 
-   # Send message to topic on 3rd node
-   $ nats-pub -s "nats://nats-2:4222" hello second
-   [#2] Received on [hello]: 'second'
-   ~~~
-2. You can use the monitoring endpoint [http://localhost:8222/](http://localhost:8222/) to retrieve information considering:
-   * variables
-   * connections
-   * routes
-   * gateways
-   * leafs
-   * subscriptions
+~~~bash
+# Startup a local container in same network
+$ docker run --network nats --rm -it synadia/nats-box
+           _             _               
+_ __   __ _| |_ ___      | |__   _____  __
+| '_ \ / _` | __/ __|_____| '_ \ / _ \ \/ /
+| | | | (_| | |_\__ \_____| |_) | (_) >  < 
+|_| |_|\__,_|\__|___/     |_.__/ \___/_/\_\
+                                          
+nats-box v0.4.0
+# Register a listener on primary node
+$ nats-sub -s nats://nats:4222 hello &
+Listening on [hello]
+
+# Send message to topic on 2nd node
+$ nats-pub -s "nats://nats-1:4222" hello first
+[#1] Received on [hello]: 'first'
+
+# Send message to topic on 3rd node
+$ nats-pub -s "nats://nats-2:4222" hello second
+[#2] Received on [hello]: 'second'
+~~~
 
 ## NATS CLI
 
