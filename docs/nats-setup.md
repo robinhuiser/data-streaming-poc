@@ -109,7 +109,7 @@ newyork: ☀️ +2°C
 
 ## NATS Web-UI
 
-1. In the [NATS Web UI](http://localhost:8080), add a server with Hostname `nats` - leave ports default
+1. In the [NATS Web UI](http://localhost:3301), add a server with Hostname `nats` - leave ports default
 2. To trace messages in the server:
    * In the UI, create on server `nats` add the subject `cli.demo` under **Server Subject Hierarchy** as shown below:
 
