@@ -1,6 +1,6 @@
 # Metadata streaming PoC
 
-Proof of concept for streaming bank portfolio metadata using event sourcing.
+Proof of concept for streaming bank [portfolio metadata](./reference/portfolio-01.json) using event sourcing.
 
 ![design-solution-1](./imgs/design-solution-1.png)
 
