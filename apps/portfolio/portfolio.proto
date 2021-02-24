@@ -1,0 +1,19 @@
+syntax = "proto3";
+package portfolio;
+
+service PortfolioService {   
+    // Get all Portfolios with filter
+    rpc GetPortfolios(PortfolioFilter) returns (stream Portfolio) {}
+    // Create a new Portfolio 
+    rpc CreatePortfolio (Portfolio) returns (PortfolioResponse) {}
+  }
+
+message Portfolio {}
+
+message PortfolioResponse {}
+
+message PortfolioFilter {}
+
+message ServiceDiscovery {}
+
+message EventStore {}
