@@ -3,93 +3,103 @@
     "timestamp": 1613816552,
     "customerId": "9397a0cf-2968-41d0-9a49-8ee7080b9d04",
     "assets": {
-        "card.975620fa-3b60-40b4-815c-5076ecf9dea4": {
-            "id": "975620fa-3b60-40b4-815c-5076ecf9dea4",
-            "first_entry": 1613816552,
-            "last_entry": 1614076548,
-            "title": "**********57896",
-            "type": "debit",
-            "daily_limit": 1000,
-            "exp_date": 202108,
-            "link": "account.df29ab74-8ada-4895-84d2-5d68995463ad",
-            "details": {
-                "bal_available": {
-                    "name": "available_balance"
-                }
-            },
-            "notifications": {
-                "bal_available_low": {
-                    "id": 1516143945,
-                    "status": "CLEAR",
-                    "units": "USD",
-                    "update_every": 30
+        "cards": [
+            {
+                "id": "975620fa-3b60-40b4-815c-5076ecf9dea4",
+                "first_entry": 1613816552,
+                "last_entry": 1614076548,
+                "title": "**********57896",
+                "type": "debit",
+                "daily_limit": 1000,
+                "expiration_date": 1645660800,
+                "linked_account_id": "df29ab74-8ada-4895-84d2-5d68995463ad",
+                "details": {
+                    "balance_available": {
+                        "name": "available_balance"
+                    }
+                },
+                "notifications": [
+                    {
+                        "balance_available_low": {
+                            "id": 1516143945,
+                            "status": "UNDEFINED",
+                            "units": "USD",
+                            "update_every": 30
+                        }
+                    }
+                ]
+            }
+        ],
+        "accounts": [
+            {
+                "id": "df29ab74-8ada-4895-84d2-5d68995463ad",
+                "first_entry": 1613816552,
+                "last_entry": 1614076548,
+                "title": "******3987",
+                "routing_number": "211573229",
+                "iban": "US85467556001461696224770630",
+                "type": "checking",
+                "currency": "USD",
+                "details": {
+                    "balance_available": {
+                        "name": "available_balance"
+                    },
+                    "balance_current": {
+                        "name": "current_balance"
+                    },
+                    "transaction_id": {
+                        "name": "transaction_id"
+                    },
+                    "transaction_amount": {
+                        "name": "transaction_amount"
+                    },
+                    "transaction_description": {
+                        "name": "transaction_description"
+                    },
+                    "transaction_account": {
+                        "name": "transaction_account"
+                    }
+                },
+                "notifications": [
+                    {
+                        "balance_available_low": {
+                            "id": 1516143945,
+                            "status": "CLEAR",
+                            "units": "USD",
+                            "update_every": 30
+                        },
+                        "balance_drop": {
+                            "id": 1516143945,
+                            "status": "WARNING",
+                            "units": "USD",
+                            "update_every": 10
+                        }
+                    }
+                ]
+            }
+        ],
+        "loans": [
+            {
+                "id": "9b227da9-a175-4cb6-a971-8cbb34953a03",
+                "first_entry": 1613816552,
+                "last_entry": 1614076548,
+                "title": "00000001",
+                "type": "personal",
+                "currency": "USD",
+                "amount": 5000,
+                "commencement_date": 1614124800,
+                "number_of_installments": 12,
+                "interest_rate": 9.8,
+                "linked_account_id": "df29ab74-8ada-4895-84d2-5d68995463ad",
+                "details": {
+                    "number_of_open_installments": {
+                        "name": "open_installments"
+                    },
+                    "balance_loan": {
+                        "name": "loan_balance"
+                    }
                 }
             }
-        },
-        "account.df29ab74-8ada-4895-84d2-5d68995463ad": {
-            "id": "df29ab74-8ada-4895-84d2-5d68995463ad",
-            "first_entry": 1613816552,
-            "last_entry": 1614076548,
-            "title": "******3987",
-            "routing": "211573229",
-            "iban": "US85467556001461696224770630",
-            "type": "checking",
-            "currency": "USD",
-            "details": {
-                "bal_available": {
-                    "name": "available_balance"
-                },
-                "bal_current": {
-                    "name": "current_balance"
-                },
-                "tran_id": {
-                    "name": "transaction_id"
-                },
-                "tran_amount": {
-                    "name": "transaction_amount"
-                },
-                "tran_description": {
-                    "name": "transaction_description"
-                },
-                "tran_account": {
-                    "name": "transaction_account"
-                }
-            },
-            "notifications": {
-                "bal_available_low": {
-                    "id": 1516143945,
-                    "status": "CLEAR",
-                    "units": "USD",
-                    "update_every": 30
-                },
-                "bal_drop": {
-                    "id": 1516143945,
-                    "status": "UNDEFINED",
-                    "units": "USD",
-                    "update_every": 10
-                }
-            }
-
-        },
-        "loan.9b227da9-a175-4cb6-a971-8cbb34953a03": {
-            "id": "9b227da9-a175-4cb6-a971-8cbb34953a03",
-            "first_entry": 1613816552,
-            "last_entry": 1614076548,
-            "title": "00000001",
-            "type": "personal",
-            "currency": "USD",
-            "amount": 5000,
-            "nr_installments": 12,
-            "interest_rate": 9.8,
-            "link": "account.df29ab74-8ada-4895-84d2-5d68995463ad",
-            "details": {
-                "open_installments": {
-                    "name": "open_installments"
-                },
-                "bal_loan": {
-                    "name": "loan_balance"
-                }
-            }
-        }
+        ]
     }
 }
