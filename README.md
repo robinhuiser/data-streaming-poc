@@ -1,4 +1,4 @@
-# Data streaming PoC
+# Metadata streaming PoC
 
 Proof of concept for streaming bank portfolio metadata using event sourcing.
 
