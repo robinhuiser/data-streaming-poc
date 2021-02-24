@@ -4,7 +4,7 @@ How to setup NATS using Docker and local CLI to interact.
 
 ## Install & run server & Web-UI
 
-Both NATS and Web-UI are started with the `docker-compose.yml`.
+Both NATS and Web-UI are started within the project [docker-compose.yml](../docker-compose.yml).
 
 * Server is available at `nats://localhost:4222`
 * UI is available at: [http://localhost:3301](http://localhost:3301)
